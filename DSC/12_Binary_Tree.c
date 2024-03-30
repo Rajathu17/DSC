@@ -11,21 +11,25 @@ struct node {
 struct node *create()
 {
     struct node *newnode;
-    int x;
-    newnode = (struct node *)malloc(sizeof(struct node));
-    printf("Enter the value = ");
-    scanf("%d",&x);
-    if (x == -1)
-    {
-        free(newnode);
-        return 0;
+    int data;
+    printf("Enter node value (-1 to stop): ");
+    scanf("%d", &data);
+    
+    if (data == -1) {
+        return NULL;
     }
-    newnode->data=x;
-    printf("Enter left node value of %d or else enter -1 to not create left node\n",x);
-    newnode->left=create();
-    printf("Enter right node value of %d or else enter -1 to not create right node\n",x);
-    newnode->right=create();
-    return newnode;
+
+    
+    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+    newNode->data = data;
+
+
+    printf("Enter left child of %d:\n", data);
+    newNode->left = createTree();
+    printf("Enter right child of %d:\n", data);
+    newNode->right = createTree();
+
+    return newNode;
 }
 
 void pre_order(struct node *root)
