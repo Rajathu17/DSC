@@ -25,9 +25,9 @@ struct node *create()
 
 
     printf("Enter left child of %d:\n", data);
-    newNode->left = createTree();
+    newNode->left = create();
     printf("Enter right child of %d:\n", data);
-    newNode->right = createTree();
+    newNode->right = create();
 
     return newNode;
 }
