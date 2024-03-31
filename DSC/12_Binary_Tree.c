@@ -4,13 +4,13 @@
 struct node {
     int data;
     struct node *left, *right;
-};
+} *root=NULL;
 
 
 
 struct node *create()
 {
-    struct node *newnode;
+    
     int data;
     printf("Enter node value (-1 to stop): ");
     scanf("%d", &data);
@@ -19,8 +19,8 @@ struct node *create()
         return NULL;
     }
 
-    
-    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+  
+    struct node *newNode = (struct node *)malloc(sizeof(struct node));
     newNode->data = data;
 
 
@@ -77,7 +77,6 @@ void in_order (struct node *root)
 
 void main()
 {
-    struct node *root=0;
     int ch;
     while (1)
     {
