@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#define MAX 100
+#define MAX 5
 
 int stack[MAX];
 int top = -1;
