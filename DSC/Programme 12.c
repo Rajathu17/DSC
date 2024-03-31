@@ -1,28 +1,28 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-struct node {
+typedef struct node{
     int data;
     struct node *left, *right;
-};
+}Node;
 
-struct node* newNode(int data) {
-    struct node* node = (struct node*)malloc(sizeof(struct node));
+Node* newNode(int data) {
+    Node* node = (Node*)malloc(sizeof(Node));
     node->data = data;
     node->left = node->right = NULL;
     return node;
 }
 
-struct node* insert(struct node* node, int data) {
+Node* insert(Node* node, int data) {
     if (node == NULL) return newNode(data);
     if (data < node->data)
         node->left  = insert(node->left, data);
-    else if (data > node->data)
+    else 
         node->right = insert(node->right, data);
     return node;
 }
 
-void inorder(struct node *root) {
+void inorder(Node *root) {
     if (root != NULL) {
         inorder(root->left);
         printf("%d \n", root->data);
@@ -30,7 +30,7 @@ void inorder(struct node *root) {
     }
 }
 
-void preorder(struct node *root) {
+void preorder(Node *root) {
     if (root != NULL) {
         printf("%d \n", root->data);
         preorder(root->left);
@@ -38,7 +38,7 @@ void preorder(struct node *root) {
     }
 }
 
-void postorder(struct node *root) {
+void postorder(Node *root) {
     if (root != NULL) {
         postorder(root->left);
         postorder(root->right);
@@ -47,7 +47,7 @@ void postorder(struct node *root) {
 }
 
 int main() {
-    struct node *root = NULL;
+    Node *root = NULL;
     root = insert(root, 50);
     insert(root, 30);
     insert(root, 20);
