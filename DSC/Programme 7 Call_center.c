@@ -17,9 +17,9 @@ void insert(int x)
     else
     { 
         if (front == -1 && rear == -1 )
-             front=0;
-     call_list[++rear] = x;   
-     printf("%d is added to call\n",x);
+         front=0;
+    call_list[++rear] = x;   
+    printf("%d is added to call\n",x);
     }
 }
 
