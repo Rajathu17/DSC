@@ -1,107 +1,87 @@
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#define MAX 100
 
-#define N 5
+int stack[MAX];
+int top = -1;
 
-int queue[N];
-int front=-1;
-int rear=-1; 
-
-void enqueue()
-{
-    int x;
-    if (rear == N-1)
-    {
-        printf("Queue is full\n");
-    }
-    else if (front==-1 && rear==-1)
-    {
-        printf("Enter the number to be inserted = ");
-        scanf("%d",&x);
-        front=rear=0;
-        queue[rear]=x;
-        printf("Element is inserted\n");
-    }
+void push(int element) {
+    if (top == MAX - 1)
+        printf("Stack Overflow!\n");
     else
-    {
-     printf("Enter the number to be inserted = ");
-     scanf("%d",&x);
-     queue[++rear]=x;   
-     printf("Element is inserted\n");
-    }
+        stack[++top] = element;
 }
 
-void dequeue()
-{
-    if (front==-1 && rear==-1)
-    {
-        printf("Queue is Empty\n");
+int pop() {
+    if (top == -1) {
+        printf("Stack Underflow!\n");
+        return -1;
     }
-    else if (front == rear)
-    {
-        printf("%d is deleted\n",queue[front]);
-        front=rear=-1;
-    }
-    else 
-    {
-        printf("%d is deleted\n",queue[front++]);
-    }
+    return stack[top--];
 }
+
+bool isPalindrome() {
+    if (top == -1)
+        return false;
     
-void display()
-{
-    int i;
-    if (front==-1 && rear==-1)
-    {
-        printf("Queue is Empty\n");
+    int i = 0, j = top;
+    while (i <= j) {
+        if (stack[i] != stack[j])
+            return false;
+        i++;
+        j--;
     }
-    else 
-    {
-        printf("Elements in Queue are = \n");
-        for (i=front;i<rear+1;i++)
-        {
-            printf("%d\t",queue[i]);
-        }
-        printf("\n");
-        
-    }
+    return true;
 }
 
-void peep()
-{
-    printf("Element present in front is = %d",queue[front]);
-    printf("\n");
+void displayStack() {
+    if (top == -1)
+        printf("Stack is empty\n");
+    else {
+        printf("Stack contents: ");
+        for (int i = 0; i <= top; i++)
+            printf("%d ", stack[i]);
+        printf("\n");
+    }
 }
 
 int main() {
-    int ch;
+    int choice, element;
+    while (1) {
+        printf("\nSTACK Operations\n");
+        printf("1. Push\n");
+        printf("2. Pop\n");
+        printf("3. Check if stack contents form a palindrome\n");
+        printf("4. Display Stack\n");
+        printf("5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
 
-    while(1)
-    {
-    printf("*****************\n");
-    printf("Enter the option \n1. Insertion\n2. Deletion\n3. Display\n4. Peep\n");
-    scanf("%d",&ch);
-        switch (ch)
-        {
+        switch(choice) {
             case 1:
-                    enqueue();
-                    break;
-        
+                printf("Enter element to push: ");
+                scanf("%d", &element);
+                push(element);
+                break;
             case 2:
-                    dequeue();
-                    break;
+                printf("Popped element: %d\n", pop());
+                break;
             case 3:
-                    display();
-                    break;
+                if (isPalindrome())
+                    printf("Stack contents form a palindrome.\n");
+                else
+                    printf("Stack contents do not form a palindrome.\n");
+                break;
             case 4:
-                    peep();
-                    break;
+                displayStack();
+                break;
             case 5:
-                    exit(0);
-                    break;
+                printf("Exiting...\n");
+                exit(0);
+            default:
+                printf("Invalid choice!\n");
         }
     }
-
     return 0;
 }
