@@ -30,22 +30,17 @@ void insertLeft(int key, int newData) {
         current = current->next;
     }
 
-    // If key is not found
-    if (current == NULL) {
-        printf("Key not found in the list. Cannot insert.\n");
-        free(newNode);
-        return;
-    }
-
     // Insert the new node to the left of the node with the given key
     newNode->next = current;
     newNode->prev = current->prev;
-    if (current->prev != NULL) {
-        current->prev->next = newNode;
-    } else {
+    current->prev = newNode;
+
+    if (current->prev == NULL) {
         head = newNode;
     }
-    current->prev = newNode;
+    else{
+     current->prev->next = newNode;
+    }
 
     printf("%d inserted to the left of %d\n", newData, key);
 }
