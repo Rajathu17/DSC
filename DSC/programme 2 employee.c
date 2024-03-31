@@ -41,7 +41,7 @@ void addsal(employee *array,int n) {
    printf("enter Dept:");
   scanf("%s",dept);
   for (int i = 0; i < n; i++) {
-    if (strcmp(((array+i)->dept), dept) == 0) { // compare the department names
+    if (strcmp(((array+i)->dept), dept) == 0) { // compare the departments
       sum += (array+i)->salary; // add the salary to the sum
     }
   }
