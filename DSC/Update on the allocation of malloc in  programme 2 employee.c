@@ -13,10 +13,9 @@ typedef struct e{
 int main()
 {
   
-    employee *emp;
     printf("no. of employee ");
     int a; scanf("%d",&a);
-    emp=(employee*)malloc(a*sizeof(employee));
+    employee *emp= (employee*)malloc(a*sizeof(employee));
     for(int i=0;i<a;i++){ 
 
     printf("\nEnter details  of emp %d:\n",i+1);
