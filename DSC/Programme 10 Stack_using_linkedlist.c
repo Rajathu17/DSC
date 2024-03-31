@@ -23,8 +23,12 @@ void push(int x)
 int pop()
 {
     temp=top;
-    top=top->link;
-    int x=temp->data;   
+    if (temp == 0)
+    {
+        printf("Stack is empty\n");
+    }
+    int x=temp->data;  
+    top=top->link; 
     free(temp);
     return x;
 }
@@ -37,6 +41,7 @@ void display()
         printf("Stack is empty\n");
     }
     else{
+
     printf("Elements in the stack is = \n");
     while(temp != 0)
     {
@@ -44,6 +49,7 @@ void display()
         temp=temp->link;
     }
     }
+    
 }
 
 int peep()
