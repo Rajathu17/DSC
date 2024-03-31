@@ -28,7 +28,7 @@ int main() {
     {
         if (isdigit(*e))
             {
-                x=*e-48;
+                x=*e-'0';
                 push(x);
                 
             }
