@@ -9,18 +9,15 @@ int rear=-1;
 
 void insert(int x)
 {
-    if (front == -1 && rear == -1 )
-    {
-        front=rear=0;
-        call_list[rear]=x;
-        printf("%d is added to call\n",x);
-    }
-    else if (rear == N-1)
+   
+    if (rear == N-1)
     {
         printf("Call Queue is full\n");
     }
     else
-    {
+    { 
+        if (front == -1 && rear == -1 )
+             front=0;
      call_list[++rear] = x;   
      printf("%d is added to call\n",x);
     }
