@@ -3,12 +3,10 @@
 
 #define MAX_SIZE 3
 
-// Structure to represent a circular queue element
 struct CircularQueue {
     int data;
 };
 
-// Circular Queue variables
 struct CircularQueue queue[MAX_SIZE];
 int front = -1, rear = -1;
 
@@ -16,7 +14,6 @@ int isFull() {
     return (rear + 1) % MAX_SIZE == front;
 }
 
-// Function to check if the circular queue is empty
 int isEmpty() {
     return front == -1 && rear == -1;
 }
@@ -58,8 +55,6 @@ int main() {
 
     return 0;
 }
-
-// Function to enqueue an element
 void enqueue(int value) {
     if (isFull()) {
         printf("Queue is full. Cannot enqueue.\n");
@@ -71,8 +66,6 @@ void enqueue(int value) {
     queue[rear].data = value;
     printf("%d enqueued successfully.\n", value);
 }
-
-// Function to dequeue an element
 int dequeue() {
     if (isEmpty()) {
         printf("Queue is empty. Cannot dequeue.\n");
@@ -87,9 +80,6 @@ int dequeue() {
     return value;
 }
 
-// Function to check if the circular queue is full
-
-// Function to display the elements of the circular queue
 void display() {
     if (isEmpty()) {
         printf("Queue is empty.\n");
