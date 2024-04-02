@@ -1,17 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_SIZE 3
+#define N 3
 
 struct CircularQueue {
     int data;
 };
 
-struct CircularQueue queue[MAX_SIZE];
+struct CircularQueue queue [N];
 int front = -1, rear = -1;
 
 int isFull() {
-    return (rear + 1) % MAX_SIZE == front;
+    return (rear + 1) % N == front;
 }
 
 int isEmpty() {
@@ -61,7 +61,7 @@ void enqueue(int value) {
         return;
     }
     else {
-        rear = (rear + 1) % MAX_SIZE;
+        rear = (rear + 1) % N;
     }
     queue[rear].data = value;
     printf("%d enqueued successfully.\n", value);
@@ -75,7 +75,7 @@ int dequeue() {
     if (front == rear) {
         front = rear = -1;
     } else {
-        front = (front + 1) % MAX_SIZE;
+        front = (front + 1) % N;
     }
     return value;
 }
@@ -87,9 +87,9 @@ void display() {
     }
     printf("front:%d",front);
     printf("Elements in the circular queue: ");
-    for(int i = front;i!=rear;i = (i + 1) % MAX_SIZE)
-  
+    for(int i = front;i!=rear;i = (i + 1) % N)
         printf("%d ", queue[i].data);
+       
         if (i == rear)
           printf("%d ", queue[i].data);
             
